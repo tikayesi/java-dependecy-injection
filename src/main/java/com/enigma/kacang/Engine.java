@@ -1,4 +1,4 @@
-package com.enigma.di;
+package com.enigma.kacang;
 
 public interface Engine {
     public void startEngine();

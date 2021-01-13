@@ -1,29 +1,17 @@
 package com.enigma;
 
-import com.enigma.di.*;
-import org.mockito.Mockito;
+import com.enigma.kacang.Car;
+import com.enigma.kacang.DieselEngine;
+import com.enigma.kacang.ElectricalEngine;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ElectricalEngine electricalEngine = new ElectricalEngine();
-        GasolineEngine gasolineEngine = new GasolineEngine();
-        DieselEngine dieselEngine = new DieselEngine();
-        //constructor
-        Car mobil = new Car(electricalEngine);
+        //app context a/ tmpt hidup para bean
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("para-beans.xml");
+        ElectricalEngine engine = (ElectricalEngine) applicationContext.getBean("electricEngine");
 
-        //setter
-        Car newMobil = new Car();
-        newMobil.setEngine(electricalEngine);
-
-        Engine mockEngine = Mockito.mock(Engine.class);
-
-        Car mockExample = new Car(mockEngine);
-
-        mobil.run();
-        newMobil.run();
-        mockExample.run();
-
-        Mockito.verify(mockEngine, Mockito.times(1)).startEngine();
+        Car mustang = (Car) applicationContext.getBean("mustang");
+        mustang.run();
     }
-
 }
