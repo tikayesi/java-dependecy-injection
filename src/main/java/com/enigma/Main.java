@@ -3,15 +3,25 @@ package com.enigma;
 import com.enigma.kacang.Car;
 import com.enigma.kacang.DieselEngine;
 import com.enigma.kacang.ElectricalEngine;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         //app context a/ tmpt hidup para bean
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("para-beans.xml");
-        ElectricalEngine engine = (ElectricalEngine) applicationContext.getBean("electricEngine");
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 
-        Car mustang = (Car) applicationContext.getBean("mustang");
+        String [] beanNames = applicationContext.getBeanDefinitionNames();
+
+        for (String beanName: beanNames
+             ) {
+            System.out.println(beanName);
+        }
+
+        Car mustang = (Car) applicationContext.getBean("terios");
         mustang.run();
     }
 }

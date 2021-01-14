@@ -3,10 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="engine-beans.xml"/>
+<!--    <import resource="engine-beans.xml"/>-->
 
-    <bean id="mustang" class="com.enigma.kacang.Car">
-        <constructor-arg name="engine" ref="dieselengine"/>
-    </bean>
+<!--    <bean id="mustang" class="com.enigma.kacang.Car">-->
+<!--        <constructor-arg name="engine" ref="dieselengine"/>-->
+<!--    </bean>-->
 
 </beans>
